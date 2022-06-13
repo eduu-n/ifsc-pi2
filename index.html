@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, block-scale=1.0">
+    <title>Checklist PI2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    body {
+        background-color: #edeef0;
+        display: table;
+        margin: auto;
+    }
+    h1, h2 {
+        font-family: Ubuntu;
+        color: #333333;
+        margin: 10px;
+    }
+    #inicio h3, #inicio h4, #selecao h3, #selecao h4 {
+        font-family: Ubuntu;
+        color: rgba(0, 0, 0, 0.4);
+        margin: 5px;
+        padding: 0px;
+    }
+    h3, h4 {
+        font-family: Ubuntu;
+        color: #333333;
+        margin: 5px;
+        padding-top: 15px;
+    }
+    p {
+        color: rgba(0, 0, 0, 0.4);
+        font-family: Ubuntu;
+        margin: 10px;
+    }
+    .logo {
+        height: 100px;
+        padding-top: 25px;
+    }
+    #inicio{
+        text-align: center;
+        width: 400px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    #grafico{
+        text-align: center;
+        width: 400px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        display: none;
+    }
+    #selecao {
+        text-align: center;
+        background-color: white;
+        width: 400px;
+        border-radius: 15px;
+        box-shadow: 2px 2px 15px 0px rgba(0,0,0,0.2);
+        padding-top: 5px;
+        padding-bottom: 10px;
+    }
+    #selecao h3 {
+        font-family: Ubuntu;
+        color: #333333;
+        margin: 10px;
+    }
+    #selecao_itens {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    #botao_selecao{
+        padding-top: 10px;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+    #rampa_lista, #degraus_lista, #corrimaos_lista, #pisos_lista, #desniveis_lista, #rampa_lista, #grelhas_lista, #caixas_lista, #rotasacess_lista, #rotasfuga_lista, #elevadores_lista, #portas_lista, #interfones_lista, #sala_lista, #cozinha_lista, #dormitorio2_lista, #dormitorio1_lista, #banheiros_lista, #areaservico_lista {
+        text-align: center;
+        background-color: white;
+        border-radius: 15px;
+        width: 400px;
+        box-shadow: 2px 2px 15px 0px rgba(0,0,0,0.2);
+        display: none;
+        margin-top: 15px;
+    }
+        button {
+        font-family: Ubuntu;
+        font-size: 18px;
+        background-color: #ffffff;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    button:hover {
+        cursor: pointer;
+        color: #ffffff;
+        background-color: #333333;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    table {
+        font-family: Ubuntu;
+        margin: 10px;
+    }
+    td {
+        text-align: center;
+        padding: 10px;
+        color: rgba(0, 0, 0, 0.4);
+    }
+    td:nth-child(1) {
+        text-align: left;
+        padding: 10px;
+        color: rgba(0, 0, 0, 0.4);
+    }
+    th {
+       padding-right: 10px;
+       padding-left: 10px;
+    }
+    input[value="yes"] {
+	accent-color: rgb(59, 160, 59);
+    transform: scale(1.5);
+}
+    input[value="no"] {
+	accent-color: rgb(158, 40, 40);
+    transform: scale(1.5);
+}
+    input[value="na"] {
+	accent-color: #333333;
+    transform: scale(1.5);
+}
+    input[type="checkbox"] {
+	accent-color: #333333;
+    transform: scale(1.2);
+}
+</style>
+
+<body>
+    <div id="inicio">
+        <img src="logo-ifsc.svg" class="logo">
+        <h2>Instituto Federal</h2>
+        <h2> de Santa Catarina</h2>
+        <h4>Projeto Integrador II</h4>
+        <h4>Checklist Funcionalidade e Acessibilidade - ABNT NBR 15.575</h4>
+    </div>
+    <div id="selecao">
+        <h3>Itens da Verificação</h3>
+            <div id="selecao_itens">
+            <p><input type="checkbox" id="rampa" name="check"> Rampas</p>
+            <p><input type="checkbox" id="degraus" name="check"> Degraus e Escadas Fixas</p>
+            <p><input type="checkbox" id="corrimaos" name="check"> Corrimãos</p>
+            <p><input type="checkbox" id="pisos" name="check"> Pisos</p>
+            <p><input type="checkbox" id="desniveis" name="check"> Desníveis</p>
+            <p><input type="checkbox" id="grelhas" name="check"> Grelhas e Juntas de Dilatação</p>
+            <p><input type="checkbox" id="caixas" name="check"> Caixas de Passagem</p>
+            <p><input type="checkbox" id="rotasacess" name="check"> Rotas Acessíveis</p>
+            <p><input type="checkbox" id="rotasfuga" name="check"> Rotas de Fuga</p>
+            <p><input type="checkbox" id="elevadores" name="check"> Elevadores</p>
+            <p><input type="checkbox" id="portas" name="check"> Portas</p>
+            <p><input type="checkbox" id="interfones" name="check"> Interfones e Telefones</p>
+            <p><input type="checkbox" id="sala" name="check"> Sala de Estar/Jantar/Copa</p>
+            <p><input type="checkbox" id="cozinha" name="check"> Cozinha</p>
+            <p><input type="checkbox" id="dormitorio2" name="check"> Dormitório - 2 Pessoas</p>
+            <p><input type="checkbox" id="dormitorio1" name="check"> Dormitório - 1 Pessoa</p>
+            <p><input type="checkbox" id="banheiros" name="check"> Banheiros</p>
+            <p><input type="checkbox" id="areaservico" name="check"> Área de Serviço</p>
+            </div>
+            <div id="botao_selecao">
+            <button onclick="selects()">Marcar Todos</button>
+            <button onclick="deSelect()">Desmarcar Todos</button>
+            </div>
+        </div>
+
+    <div id="rampa_lista">
+        <h4>Rampas</h4>
+        <table>
+            <tr>
+                <th>Critério</th>
+                <th>Sim</th>
+                <th>Não</th>
+                <th>N/A</th>
+            </tr>
+            <tr>
+                <td>Presença de rampa na área externa com largura mínima de 1,20 m? (A norma recomenda uma largura mínima de 1,50 m).</td>
+                <td><input value="yes" type="radio" name="rampa1"></td>
+                <td><input value="no" type="radio" name="rampa1"></td>
+                <td><input value="na"  type="radio" name="rampa1"></td>
+            </tr>
+            <tr>
+                <td>As rampas com desníveis de 1,5 m possuem inclinação máxima de 5%?</td>
+                <td><input value="yes" type="radio" name="rampa2"></td>
+                <td><input value="no" type="radio" name="rampa2"></td>
+                <td><input value="na" type="radio" name="rampa2"></td>
+            </tr>
+            <tr>
+                <td>As rampas com desníveis de 1,0 m possuem inclinação entre 5 e 6,5%?</td>
+                <td><input value="yes" type="radio" name="rampa3"></td>
+                <td><input value="no" type="radio" name="rampa3"></td>
+                <td><input value="na" type="radio" name="rampa3"></td>
+            </tr>
+            <tr>
+                <td>As rampas com desníveis de 0,8 m possuem inclinação entre 6,25 e 8,33%?</td>
+                <td><input value="yes" type="radio" name="rampa4"></td>
+                <td><input value="no" type="radio" name="rampa4"></td>
+                <td><input value="na" type="radio" name="rampa4"></td>
+            </tr>
+            <tr>
+                <td>As rampas em curvas apresentam inclinação máxima de 8,33%?</td>
+                <td><input value="yes" type="radio" name="rampa5"></td>
+                <td><input value="no" type="radio" name="rampa5"></td>
+                <td><input value="na" type="radio" name="rampa5"></td>
+            </tr>
+            <tr>
+                <td>Há patamares no início e no término da rampa? A norma prevê patamares com dimensão longitudinal mínima de 1,20 m e recomendável de 1,50 m.</td>
+                <td><input value="yes" type="radio" name="rampa6"></td>
+                <td><input value="no" type="radio" name="rampa6"></td>
+                <td><input value="na" type="radio" name="rampa6"></td>
+            </tr>
+            <tr>
+                <td>A inclinação transversal dos patamares não excedem 2% em rampas internas e 3% em rampas externas?</td>
+                <td><input value="yes" type="radio" name="rampa7"></td>
+                <td><input value="no" type="radio" name="rampa7"></td>
+                <td><input value="na" type="radio" name="rampa7"></td>
+            </tr>
+            <tr>
+                <td>Há sinalização tátil de alerta no início e término das rampas, em cor contrastante com a do piso?</td>
+                <td><input value="yes" type="radio" name="rampa8"></td>
+                <td><input value="no" type="radio" name="rampa8"></td>
+                <td><input value="na" type="radio" name="rampa8"></td>
+            </tr>
+            <tr>
+                <td>São previstas áreas de descanso para rampas com inclinação acima de 5%? A norma prevê a cada 50 m uma área de descanso fora da faixa de circulação.</td>
+                <td><input value="yes" type="radio" name="rampa9"></td>
+                <td><input value="no" type="radio" name="rampa9"></td>
+                <td><input value="na" type="radio" name="rampa9"></td>
+            </tr>
+        </table>
+    </div>
+    <div id="degraus_lista">
+        <h4>Degraus e Escadas Fixas</h4>
+        <table>
+            <tr>
+                <th>Critério</th>
+                <th>Sim</th>
+                <th>Não</th>
+                <th>N/A</th>
+            </tr>
+            <tr>
+                <td>Os degraus isolados apresentam altura do espelho entre 0,16 m e 0,18 m?</td>
+                <td><input value="yes" type="radio" name="degraus1"></td>
+                <td><input value="no" type="radio" name="degraus1"></td>
+                <td><input value="na" type="radio" name="degraus1"></td>
+            </tr>
+            <tr>
+                <td>Nas escadas fixas os pisos e espelhos possuem dimensões constantes em toda a escada?</td>
+                <td><input value="yes" type="radio" name="degraus2"></td>
+                <td><input value="no" type="radio" name="degraus2"></td>
+                <td><input value="na" type="radio" name="degraus2"></td>
+            </tr>
+            <tr>
+                <td>Os pisos apresentam dimensões no intervalo de 0,28 m e 0,32 m?</td>
+                <td><input value="yes" type="radio" name="degraus3"></td>
+                <td><input value="no" type="radio" name="degraus3"></td>
+                <td><input value="na" type="radio" name="degraus3"></td>
+            </tr>
+            <tr>
+                <td>Os espelhos apresentam dimensões no intervalo de 0,16 m e 0,18 m?</td>
+                <td><input value="yes" type="radio" name="degraus4"></td>
+                <td><input value="no" type="radio" name="degraus4"></td>
+                <td><input value="na" type="radio" name="degraus4"></td>
+            </tr>
+            <tr>
+                <td>A escada possui largura mínima de 1,20 m?</td>
+                <td><input value="yes" type="radio" name="degraus5"></td>
+                <td><input value="no" type="radio" name="degraus5"></td>
+                <td><input value="na" type="radio" name="degraus5"></td>
+            </tr>
+            <tr>
+                <td>As escadas possuem um patamar a cada 3,20 m de desnível?</td>
+                <td><input value="yes" type="radio" name="degraus6"></td>
+                <td><input value="no" type="radio" name="degraus6"></td>
+                <td><input value="na" type="radio" name="degraus6"></td>
+            </tr>
+            <tr>
+                <td>Os patamares das escadas possuem dimensão longitudinal mínima de 1,20 m?</td>
+                <td><input value="yes" type="radio" name="degraus7"></td>
+                <td><input value="no" type="radio" name="degraus7"></td>
+                <td><input value="na" type="radio" name="degraus7"></td>
+            </tr>
+            <tr>
+                <td>Na presença de bocel no projeto de escadas, a projeção da aresta avança no máximo 1,5 cm sobre o piso?</td>
+                <td><input value="yes" type="radio" name="degraus8"></td>
+                <td><input value="no" type="radio" name="degraus8"></td>
+                <td><input value="na" type="radio" name="degraus8"></td>
+            </tr>
+            <tr>
+                <td>Há sinalização tátil de alerta na borda do piso em cor contrastante com a do acabamento?</td>
+                <td><input value="yes" type="radio" name="degraus9"></td>
+                <td><input value="no" type="radio" name="degraus9"></td>
+                <td><input value="na" type="radio" name="degraus9"></td>
+            </tr>
+            <tr>
+                <td>Há sinalização tátil de alerta no início e término das escadas, em cor contrastante com a do piso?</td>
+                <td><input value="yes" type="radio" name="degraus10"></td>
+                <td><input value="no" type="radio" name="degraus10"></td>
+                <td><input value="na" type="radio" name="degraus10"></td>
+            </tr>
+        </table>
+    </div>
+    <div id="corrimaos_lista">
+        <h4>Corrimãos</h4>
+        <table>
+            <tr>
+                <th>Critério</th>
+                <th>Sim</th>
+                <th>Não</th>
+                <th>N/A</th>
+            </tr>
+            <tr>
+                <td>Os corrimãos atendem às dimensões e características (largura entre 3,0 cm e 4,5 cm, sem arestas vivas e deixado um espaço livre de no mínimo 4,0 cm entre a parede e o corrimão) da norma?</td>
+                <td><input value="yes" type="radio" name="corrimaos1"></td>
+                <td><input value="no" type="radio" name="corrimaos1"></td>
+                <td><input value="na" type="radio" name="corrimaos1"></td>
+            </tr>
+            <tr>
+                <td>Os corrimãos laterais prolongam-se pelo menos 30 cm antes do início e após o término da rampa ou escada?</td>
+                <td><input value="yes" type="radio" name="corrimaos2"></td>
+                <td><input value="no" type="radio" name="corrimaos2"></td>
+                <td><input value="na" type="radio" name="corrimaos2"></td>
+            </tr>
+            <tr>
+                <td>Nas rampas e opcionalmente para escadas, os corrimãos laterais possuem as alturas entre 0,92 m e 0,70 m do piso, medidos da geratriz superior?</td>
+                <td><input value="yes" type="radio" name="corrimaos3"></td>
+                <td><input value="no" type="radio" name="corrimaos3"></td>
+                <td><input value="na" type="radio" name="corrimaos3"></td>
+            </tr>
+        </table>
+    </div>
+    <div id="pisos_lista">
+        <h4>Pisos</h4>
+        <table>
+            <tr>
+                <th>Critério</th>
+                <th>Sim</th>
+                <th>Não</th>
+                <th>N/A</th>
+            </tr>
+            <tr>
+                <td>Presença de pisos que apresentem superfície regular, firme, estável e antiderrapante sob qualquer condição, que não provoque trepidação em dispositivos com rodas?</td>
+                <td><input value="yes" type="radio" name="pisos1"></td>
+                <td><input value="no" type="radio" name="pisos1"></td>
+                <td><input value="na" type="radio" name="pisos1"></td>
+            </tr>
+            <tr>
+                <td>A inclinação transversal para os pisos internos é de até de 2%. Inclinação longitudinal máxima de 5%?</td>
+                <td><input value="yes" type="radio" name="pisos2"></td>
+                <td><input value="no" type="radio" name="pisos2"></td>
+                <td><input value="na" type="radio" name="pisos2"></td>
+            </tr>
+            <tr>
+                <td>A inclinação transversal para os pisos externos é de até de 3%. Inclinação longitudinal máxima de 5%?</td>
+                <td><input value="yes" type="radio" name="pisos3"></td>
+                <td><input value="no" type="radio" name="pisos3"></td>
+                <td><input value="na" type="radio" name="pisos3"></td>
+            </tr>
+            <tr>
+                <td>Caso haja padronagem na superfície do piso, foi projetada de forma que não ocasione a sensação de insegurança, devido a impressão de tridimensionalidade?</td>
+                <td><input value="yes" type="radio" name="pisos4"></td>
+                <td><input value="no" type="radio" name="pisos4"></td>
+                <td><input value="na" type="radio" name="pisos4"></td>
+            </tr>
+        </table>
+    </div>
+    <div id="desniveis_lista">
+        <h4>Desníveis</h4>
+        <table>
+            <tr>
+                <th>Critério</th>
+                <th>Sim</th>
+                <th>Não</th>
+                <th>N/A</th>
+            </tr>
+            <tr>
+                <td>Existem desníveis em rotas acessíveis?</td>
+                <td><input value="yes" type="radio" name="desniveis1"></td>
+                <td><input value="no" type="radio" name="desniveis1"></td>
+                <td><input value="na" type="radio" name="desniveis1"></td>
+            </tr>
+            <tr>
+                <td>Os desníveis entre 5 mm e 15 mm são tradados como rampas, com inclinação máxima de 50%?</td>
+                <td><input value="yes" type="radio" name="desniveis2"></td>
+                <td><input value="no" type="radio" name="desniveis2"></td>
+                <td><input value="na" type="radio" name="desniveis2"></td>
+            </tr>
+            <tr>
+                <td>Os desníveis superiores a 15 mm são considerados como degraus e estão sinalizados?</td>
+                <td><input value="yes" type="radio" name="desniveis3"></td>
+                <td><input value="no" type="radio" name="desniveis3"></td>
+                <td><input value="na" type="radio" name="desniveis3"></td>
+            </tr>
+            <tr>
+                <td>Na presença de desnível, utilizou-se o piso tátil direcional indicando uma rota preferencial de circulação?</td>
+                <td><input value="yes" type="radio" name="desniveis4"></td>
+                <td><input value="no" type="radio" name="desniveis4"></td>
+                <td><input value="na" type="radio" name="desniveis4"></td>
+            </tr>
+        </table>
+    </div>
+    <div id="grelhas_lista">
+        <h4>Grelhas e Juntas de Dilatação</h4>
+        <table>
+            <tr>
+                <th>Critério</th>
+                <th>Sim</th>
+                <th>Não</th>
+                <th>N/A</th>
+            </tr>
+            <tr>
+                <td>Houve a preocupação de não fixar as grelhas e as juntas de dilatação no fluxo principal de circulação?</td>
+                <td><input value="yes" type="radio" name="grelhas1"></td>
+                <td><input value="no" type="radio" name="grelhas1"></td>
+                <td><input value="na" type="radio" name="grelhas1"></td>
+            </tr>
+            <tr>
+                <td>As grelhas de ventilação possuem abertura máxima menor que 15 mm?</td>
+                <td><input value="yes" type="radio" name="grelhas2"></td>
+                <td><input value="no" type="radio" name="grelhas2"></td>
+                <td><input value="na" type="radio" name="grelhas2"></td>
+            </tr>
+        </table>
+    </div>
+    <div id="caixas_lista">
+        <h4>Caixas de Passagem</h4>
+        <table>
+            <tr>
+                <th>Critério</th>
+                <th>Sim</th>
+                <th>Não</th>
+                <th>N/A</th>
+            </tr>
+            <tr>
+                <td>As eventuais tampas das caixas de passagem estão absolutamente niveladas com o piso onde se encontram?</td>
+                <td><input value="yes" type="radio" name="caixas1"></td>
+                <td><input value="no" type="radio" name="caixas1"></td>
+                <td><input value="na" type="radio" name="caixas1"></td>
+            </tr>
+            <tr>
+                <td>As eventuais frestas das tampas de caixas de inspeção possuem dimensão máxima de 15 mm?</td>
+                <td><input value="yes" type="radio" name="caixas2"></td>
+                <td><input value="no" type="radio" name="caixas2"></td>
+                <td><input value="na" type="radio" name="caixas2"></td>
+            </tr>
+            <tr>
+                <td>As tampas estão firmes, estáveis e antiderrapantes sob qualquer condição e a eventual textura de sua superfície não pode ser similar à dos pisos táteis de alerta ou direcionais?</td>
+                <td><input value="yes" type="radio" name="caixas3"></td>
+                <td><input value="no" type="radio" name="caixas3"></td>
+                <td><input value="na" type="radio" name="caixas3"></td>
+            </tr>
+        </table>
+    </div>
+    <div id="rotasacess_lista">
+        <h4>Rotas Acessíveis</h4>
+        <table>
+            <tr>
+                <th>Critério</th>
+                <th>Sim</th>
+                <th>Não</th>
+                <th>N/A</th>
+            </tr>
+            <tr>
+                <td>Existe pelo menos um acesso vinculado através da rota acessível à circulação principal?</td>
+                <td><input value="yes" type="radio" name="rotasacess1"></td>
+                <td><input value="no" type="radio" name="rotasacess1"></td>
+                <td><input value="na" type="radio" name="rotasacess1"></td>
+            </tr>
+            <tr>
+                <td>Existe pelo menos um acesso vinculado através da rota acessível à circulação de emergência?</td>
+                <td><input value="yes" type="radio" name="rotasacess2"></td>
+                <td><input value="no" type="radio" name="rotasacess2"></td>
+                <td><input value="na" type="radio" name="rotasacess2"></td>
+            </tr>
+            <tr>
+                <td>O percurso entre o estacionamento de veículos e a(s) entrada(s) principal(is) possui uma rota acessível?</td>
+                <td><input value="yes" type="radio" name="rotasacess3"></td>
+                <td><input value="no" type="radio" name="rotasacess3"></td>
+                <td><input value="na" type="radio" name="rotasacess3"></td>
+            </tr>
+            <tr>
+                <td>Caso não seja possível atender o item 8.3; são previstas vagas de estacionamento exclusivas para pessoas com deficiência, interligadas à(s) entrada(s) através de rota(s) acessível(is)?</td>
+                <td><input value="yes" type="radio" name="rotasacess4"></td>
+                <td><input value="no" type="radio" name="rotasacess4"></td>
+                <td><input value="na" type="radio" name="rotasacess4"></td>
+            </tr>
+            <tr>
+                <td>Há a sinalização informativa, indicativa e direcional da localização das entradas acessíveis?</td>
+                <td><input value="yes" type="radio" name="rotasacess5"></td>
+                <td><input value="no" type="radio" name="rotasacess5"></td>
+                <td><input value="na" type="radio" name="rotasacess5"></td>
+            </tr>
+        </table>
+    </div>
+    <div id="rotasfuga_lista">
+        <h4>Rotas de Fuga</h4>
+        <table>
+            <tr>
+                <th>Critério</th>
+                <th>Sim</th>
+                <th>Não</th>
+                <th>N/A</th>
+            </tr>
+            <tr>
+                <td>Quando as rotas de fuga incorporarem escadas de emergência, foram previstas áreas de resgate com espaço reservado e demarcado para o posicionamento de pessoas em cadeiras de rodas?</td>
+                <td><input value="yes" type="radio" name="rotasfuga1"></td>
+                <td><input value="no" type="radio" name="rotasfuga1"></td>
+                <td><input value="na" type="radio" name="rotasfuga1"></td>
+            </tr>
+            <tr>
+                <td>A área é ventilada e está fora do fluxo principal de circulação?</td>
+                <td><input value="yes" type="radio" name="rotasfuga2"></td>
+                <td><input value="no" type="radio" name="rotasfuga2"></td>
+                <td><input value="na" type="radio" name="rotasfuga2"></td>
+            </tr>
+        </table>
+    </div>
+    <div id="elevadores_lista">
+        <h4>Elevadores</h4>
+        <table>
+            <tr>
+                <th>Critério</th>
+                <th>Sim</th>
+                <th>Não</th>
+                <th>N/A</th>
+            </tr>
+            <tr>
+                <td>A edificação possui elevador?</td>
+                <td><input value="yes" type="radio" name="elevadores1"></td>
+                <td><input value="no" type="radio" name="elevadores1"></td>
+                <td><input value="na" type="radio" name="elevadores1"></td>
+            </tr>
+            <tr>
+                <td>O elevador atende integralmente a norma ABNT NBR 13994?</td>
+                <td><input value="yes" type="radio" name="elevadores2"></td>
+                <td><input value="no" type="radio" name="elevadores2"></td>
+                <td><input value="na" type="radio" name="elevadores2"></td>
+            </tr>
+            <tr>
+                <td>Há sinalização visual no piso junto às portas dos elevadores, em cor contrastante com a do piso?</td>
+                <td><input value="yes" type="radio" name="elevadores3"></td>
+                <td><input value="no" type="radio" name="elevadores3"></td>
+                <td><input value="na" type="radio" name="elevadores3"></td>
+            </tr>
+        </table>
+    </div>
+    <div id="portas_lista">
+        <h4>Portas</h4>
+        <table>
+            <tr>
+                <th>Critério</th>
+                <th>Sim</th>
+                <th>Não</th>
+                <th>N/A</th>
+            </tr>
+            <tr>
+                <td>A abertura das portas possuem uma dimensão mínima de 0,80 m?</td>
+                <td><input value="yes" type="radio" name="portas1"></td>
+                <td><input value="no" type="radio" name="portas1"></td>
+                <td><input value="na" type="radio" name="portas1"></td>
+            </tr>
+            <tr>
+                <td>A altura das portas possuem uma dimensão mínima de 2,10 m?</td>
+                <td><input value="yes" type="radio" name="portas2"></td>
+                <td><input value="no" type="radio" name="portas2"></td>
+                <td><input value="na" type="radio" name="portas2"></td>
+            </tr>
+            <tr>
+                <td>As portas possuem maçanetas com altura entre 0,80 m e 1,00 m?</td>
+                <td><input value="yes" type="radio" name="portas3"></td>
+                <td><input value="no" type="radio" name="portas3"></td>
+                <td><input value="na" type="radio" name="portas3"></td>
+            </tr>
+            <tr>
+                <td>As portas possuem maçanetas do tipo alavanca?</td>
+                <td><input value="yes" type="radio" name="portas4"></td>
+                <td><input value="no" type="radio" name="portas4"></td>
+                <td><input value="na" type="radio" name="portas4"></td>
+            </tr>
+            <tr>
+                <td>As portas possuem maçanetas do tipo alavanca?</td>
+                <td><input value="yes" type="radio" name="portas5"></td>
+                <td><input value="no" type="radio" name="portas5"></td>
+                <td><input value="na" type="radio" name="portas5"></td>
+            </tr>
+        </table>
+    </div>
+    <div id="interfones_lista">
+        <h4>Interfones</h4>
+        <table>
+            <tr>
+                <th>Critério</th>
+                <th>Sim</th>
+                <th>Não</th>
+                <th>N/A</th>
+            </tr>
+            <tr>
+                <td>Caso possuam interfone, estes se encontram na altura entre 0,80 m a 1,20 m?</td>
+                <td><input value="yes" type="radio" name="interfones1"></td>
+                <td><input value="no" type="radio" name="interfones1"></td>
+                <td><input value="na" type="radio" name="interfones1"></td>
+            </tr>
+        </table>
+    </div>
+    <div id="sala_lista">
+        <h4>Sala de Estar/Jantar/Copa</h4>
+        <table>
+            <tr>
+                <th>Critério</th>
+                <th>Sim</th>
+                <th>Não</th>
+                <th>N/A</th>
+            </tr>
+            <tr>
+                <td>Possui espaço de 0,50 m na frente do assento?</td>
+                <td><input value="yes" type="radio" name="sala1"></td>
+                <td><input value="no" type="radio" name="sala1"></td>
+                <td><input value="na" type="radio" name="sala1"></td>
+            </tr>
+            <tr>
+                <td>Apresenta largura mínima de 2,40 m?</td>
+                <td><input value="yes" type="radio" name="sala2"></td>
+                <td><input value="no" type="radio" name="sala2"></td>
+                <td><input value="na" type="radio" name="sala2"></td>
+            </tr>
+            <tr>
+                <td>Possui espaço obrigatório para estante ou armário para TV?</td>
+                <td><input value="yes" type="radio" name="sala3"></td>
+                <td><input value="no" type="radio" name="sala3"></td>
+                <td><input value="na" type="radio" name="sala3"></td>
+            </tr>
+            <tr>
+                <td>Possui circulação mínima de 0,75 m a partir da borda da mesa?</td>
+                <td><input value="yes" type="radio" name="sala4"></td>
+                <td><input value="no" type="radio" name="sala4"></td>
+                <td><input value="na" type="radio" name="sala4"></td>
+            </tr>
+        </table>
+    </div>
+    <div id="cozinha_lista">
+        <h4>Cozinha</h4>
+        <table>
+            <tr>
+                <th>Critério</th>
+                <th>Sim</th>
+                <th>Não</th>
+                <th>N/A</th>
+            </tr>
+            <tr>
+                <td>Circulação mínima de 0,85 m frontal à pia, fogão e geladeira?</td>
+                <td><input value="yes" type="radio" name="cozinha1"></td>
+                <td><input value="no" type="radio" name="cozinha1"></td>
+                <td><input value="na" type="radio" name="cozinha1"></td>
+            </tr>
+            <tr>
+                <td>A cozinha possui a largura mínima de 1,50 m?</td>
+                <td><input value="yes" type="radio" name="cozinha2"></td>
+                <td><input value="no" type="radio" name="cozinha2"></td>
+                <td><input value="na" type="radio" name="cozinha2"></td>
+            </tr>
+            <tr>
+                <td>Possui espaço obrigatório para armário sob a pia e gabinete?</td>
+                <td><input value="yes" type="radio" name="cozinha3"></td>
+                <td><input value="no" type="radio" name="cozinha3"></td>
+                <td><input value="na" type="radio" name="cozinha3"></td>
+            </tr>
+        </table>
+    </div>
+    <div id="dormitorio2_lista">
+        <h4>Dormitório - 2 Pessoas</h4>
+        <table>
+            <tr>
+                <th>Critério</th>
+                <th>Sim</th>
+                <th>Não</th>
+                <th>N/A</th>
+            </tr>
+            <tr>
+                <td>Circulação mínima entre as camas de 0,60 m?</td>
+                <td><input value="yes" type="radio" name="dormitorio21"></td>
+                <td><input value="no" type="radio" name="dormitorio21"></td>
+                <td><input value="na" type="radio" name="dormitorio21"></td>
+            </tr>
+            <tr>
+                <td>Demais circulações: mínimo de 0,50 m?</td>
+                <td><input value="yes" type="radio" name="dormitorio22"></td>
+                <td><input value="no" type="radio" name="dormitorio22"></td>
+                <td><input value="na" type="radio" name="dormitorio22"></td>
+            </tr>
+        </table>
+    </div>
+    <div id="dormitorio1_lista">
+        <h4>Dormitório - 1 Pessoa</h4>
+        <table>
+            <tr>
+                <th>Critério</th>
+                <th>Sim</th>
+                <th>Não</th>
+                <th>N/A</th>
+            </tr>
+            <tr>
+                <td>Circulação mínima entre o mobiliário e/ou paredes de 0,50 m?</td>
+                <td><input value="yes" type="radio" name="dormitorio11"></td>
+                <td><input value="no" type="radio" name="dormitorio11"></td>
+                <td><input value="na" type="radio" name="dormitorio11"></td>
+            </tr>
+        </table>
+    </div>
+    <div id="banheiros_lista">
+        <h4>Banheiros</h4>
+        <table>
+            <tr>
+                <th>Critério</th>
+                <th>Sim</th>
+                <th>Não</th>
+                <th>N/A</th>
+            </tr>
+            <tr>
+                <td>Possui circulação mínima de 0,40 m frontal ao vaso, lavatório e bidê?</td>
+                <td><input value="yes" type="radio" name="banheiros1"></td>
+                <td><input value="no" type="radio" name="banheiros1"></td>
+                <td><input value="na" type="radio" name="banheiros1"></td>
+            </tr>
+            <tr>
+                <td>Apresenta a largura mínima do banheiro 1,10 m, exceto no box?</td>
+                <td><input value="yes" type="radio" name="banheiros2"></td>
+                <td><input value="no" type="radio" name="banheiros2"></td>
+                <td><input value="na" type="radio" name="banheiros2"></td>
+            </tr>
+            <tr>
+                <td>Dimensões mínimas box quadrado: 0,80 x 0,80 m?</td>
+                <td><input value="yes" type="radio" name="banheiros3"></td>
+                <td><input value="no" type="radio" name="banheiros3"></td>
+                <td><input value="na" type="radio" name="banheiros3"></td>
+            </tr>
+            <tr>
+                <td>Dimensões mínimas box retangular: 0,70 x 0,90 m?</td>
+                <td><input value="yes" type="radio" name="banheiros4"></td>
+                <td><input value="no" type="radio" name="banheiros4"></td>
+                <td><input value="na" type="radio" name="banheiros4"></td>
+            </tr>
+            <tr>
+                <td>Espelho instalado a uma altura entre 0,50m e 1,80m do piso acabado?</td>
+                <td><input value="yes" type="radio" name="banheiros5"></td>
+                <td><input value="no" type="radio" name="banheiros5"></td>
+                <td><input value="na" type="radio" name="banheiros5"></td>
+            </tr>
+        </table>
+    </div>
+    <div id="areaservico_lista">
+        <h4>Área de Serviço</h4>
+        <table>
+            <tr>
+                <th>Critério</th>
+                <th>Sim</th>
+                <th>Não</th>
+                <th>N/A</th>
+            </tr>
+            <tr>
+                <td>Possui circulação mínima de 0,50 m frontal ao tanque e máquina de lavar?</td>
+                <td><input value="yes" type="radio" name="areaservico1"></td>
+                <td><input value="no" type="radio" name="areaservico1"></td>
+                <td><input value="na" type="radio" name="areaservico1"></td>
+            </tr>
+        </table>
+    </div>
+    <div id="inicio">
+        <button onclick="count()">Gerar Gráfico</button>
+    </div>
+    <div id="grafico">
+    <h2>Itens em Conformidade</h2>
+    <canvas id="myChart"></canvas>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+
+document.getElementById('rampa').addEventListener('change', e => {
+    if(e.target.checked === true) {
+        document.getElementById('rampa_lista').style.display = "block"
+    }
+    if(e.target.checked === false) {
+        document.getElementById('rampa_lista').style.display = "none"
+    }
+})
+
+document.getElementById('degraus').addEventListener('change', e => {
+    if(e.target.checked === true) {
+        document.getElementById('degraus_lista').style.display = "block"
+    }
+    if(e.target.checked === false) {
+        document.getElementById('degraus_lista').style.display = "none"
+    }
+})
+
+document.getElementById('corrimaos').addEventListener('change', e => {
+    if(e.target.checked === true) {
+        document.getElementById('corrimaos_lista').style.display = "block"
+    }
+    if(e.target.checked === false) {
+        document.getElementById('corrimaos_lista').style.display = "none"
+    }
+})
+
+document.getElementById('pisos').addEventListener('change', e => {
+    if(e.target.checked === true) {
+        document.getElementById('pisos_lista').style.display = "block"
+    }
+    if(e.target.checked === false) {
+        document.getElementById('pisos_lista').style.display = "none"
+    }
+})
+
+document.getElementById('desniveis').addEventListener('change', e => {
+    if(e.target.checked === true) {
+        document.getElementById('desniveis_lista').style.display = "block"
+    }
+    if(e.target.checked === false) {
+        document.getElementById('desniveis_lista').style.display = "none"
+    }
+})
+
+document.getElementById('grelhas').addEventListener('change', e => {
+    if(e.target.checked === true) {
+        document.getElementById('grelhas_lista').style.display = "block"
+    }
+    if(e.target.checked === false) {
+        document.getElementById('grelhas_lista').style.display = "none"
+    }
+})
+
+document.getElementById('caixas').addEventListener('change', e => {
+    if(e.target.checked === true) {
+        document.getElementById('caixas_lista').style.display = "block"
+    }
+    if(e.target.checked === false) {
+        document.getElementById('caixas_lista').style.display = "none"
+    }
+})
+
+document.getElementById('rotasacess').addEventListener('change', e => {
+    if(e.target.checked === true) {
+        document.getElementById('rotasacess_lista').style.display = "block"
+    }
+    if(e.target.checked === false) {
+        document.getElementById('rotasacess_lista').style.display = "none"
+    }
+})
+
+document.getElementById('rotasfuga').addEventListener('change', e => {
+    if(e.target.checked === true) {
+        document.getElementById('rotasfuga_lista').style.display = "block"
+    }
+    if(e.target.checked === false) {
+        document.getElementById('rotasfuga_lista').style.display = "none"
+    }
+})
+
+document.getElementById('elevadores').addEventListener('change', e => {
+    if(e.target.checked === true) {
+        document.getElementById('elevadores_lista').style.display = "block"
+    }
+    if(e.target.checked === false) {
+        document.getElementById('elevadores_lista').style.display = "none"
+    }
+})
+
+document.getElementById('portas').addEventListener('change', e => {
+    if(e.target.checked === true) {
+        document.getElementById('portas_lista').style.display = "block"
+    }
+    if(e.target.checked === false) {
+        document.getElementById('portas_lista').style.display = "none"
+    }
+})
+
+document.getElementById('interfones').addEventListener('change', e => {
+    if(e.target.checked === true) {
+        document.getElementById('interfones_lista').style.display = "block"
+    }
+    if(e.target.checked === false) {
+        document.getElementById('interfones_lista').style.display = "none"
+    }
+})
+
+document.getElementById('sala').addEventListener('change', e => {
+    if(e.target.checked === true) {
+        document.getElementById('sala_lista').style.display = "block"
+    }
+    if(e.target.checked === false) {
+        document.getElementById('sala_lista').style.display = "none"
+    }
+})
+
+document.getElementById('cozinha').addEventListener('change', e => {
+    if(e.target.checked === true) {
+        document.getElementById('cozinha_lista').style.display = "block"
+    }
+    if(e.target.checked === false) {
+        document.getElementById('cozinha_lista').style.display = "none"
+    }
+})
+
+document.getElementById('dormitorio2').addEventListener('change', e => {
+    if(e.target.checked === true) {
+        document.getElementById('dormitorio2_lista').style.display = "block"
+    }
+    if(e.target.checked === false) {
+        document.getElementById('dormitorio2_lista').style.display = "none"
+    }
+})
+
+document.getElementById('dormitorio1').addEventListener('change', e => {
+    if(e.target.checked === true) {
+        document.getElementById('dormitorio1_lista').style.display = "block"
+    }
+    if(e.target.checked === false) {
+        document.getElementById('dormitorio1_lista').style.display = "none"
+    }
+})
+
+document.getElementById('banheiros').addEventListener('change', e => {
+    if(e.target.checked === true) {
+        document.getElementById('banheiros_lista').style.display = "block"
+    }
+    if(e.target.checked === false) {
+        document.getElementById('banheiros_lista').style.display = "none"
+    }
+})
+
+document.getElementById('areaservico').addEventListener('change', e => {
+    if(e.target.checked === true) {
+        document.getElementById('areaservico_lista').style.display = "block"
+    }
+    if(e.target.checked === false) {
+        document.getElementById('areaservico_lista').style.display = "none"
+    }
+})
+
+//function count(){
+//    alert(document.querySelectorAll('input[value="yes"]:checked').length + ` Itens foram marcados com SIM`);
+//}
+
+function selects(){  
+                var ele=document.getElementsByName('check');  
+                for(var i=0; i<ele.length; i++){  
+                    if(ele[i].type=='checkbox')  
+                        ele[i].checked=true;  
+                }
+                document.getElementById('rampa_lista').style.display = "block"
+                document.getElementById('degraus_lista').style.display = "block"
+                document.getElementById('corrimaos_lista').style.display = "block"
+                document.getElementById('pisos_lista').style.display = "block"
+                document.getElementById('desniveis_lista').style.display = "block"
+                document.getElementById('grelhas_lista').style.display = "block"
+                document.getElementById('caixas_lista').style.display = "block"
+                document.getElementById('rotasacess_lista').style.display = "block"
+                document.getElementById('rotasfuga_lista').style.display = "block"
+                document.getElementById('elevadores_lista').style.display = "block"
+                document.getElementById('portas_lista').style.display = "block"
+                document.getElementById('interfones_lista').style.display = "block"
+                document.getElementById('sala_lista').style.display = "block"
+                document.getElementById('cozinha_lista').style.display = "block"
+                document.getElementById('dormitorio2_lista').style.display = "block"
+                document.getElementById('dormitorio1_lista').style.display = "block"
+                document.getElementById('banheiros_lista').style.display = "block"
+                document.getElementById('areaservico_lista').style.display = "block"
+            }
+            function deSelect(){  
+                var ele=document.getElementsByName('check');  
+                for(var i=0; i<ele.length; i++){  
+                    if(ele[i].type=='checkbox')  
+                        ele[i].checked=false;  
+                }  
+                document.getElementById('rampa_lista').style.display = "none"
+                document.getElementById('degraus_lista').style.display = "none"
+                document.getElementById('corrimaos_lista').style.display = "none"
+                document.getElementById('pisos_lista').style.display = "none"
+                document.getElementById('desniveis_lista').style.display = "none"
+                document.getElementById('grelhas_lista').style.display = "none"
+                document.getElementById('caixas_lista').style.display = "none"
+                document.getElementById('rotasacess_lista').style.display = "none"
+                document.getElementById('rotasfuga_lista').style.display = "none"
+                document.getElementById('elevadores_lista').style.display = "none"
+                document.getElementById('portas_lista').style.display = "none"
+                document.getElementById('interfones_lista').style.display = "none"
+                document.getElementById('sala_lista').style.display = "none"
+                document.getElementById('cozinha_lista').style.display = "none"
+                document.getElementById('dormitorio2_lista').style.display = "none"
+                document.getElementById('dormitorio1_lista').style.display = "none"
+                document.getElementById('banheiros_lista').style.display = "none"
+                document.getElementById('areaservico_lista').style.display = "none"
+            }
+
+function count(){
+    document.getElementById('grafico').style.display = "block"
+    var graph_yes = document.querySelectorAll('input[value="yes"]:checked').length
+    var graph_no = document.querySelectorAll('input[value="no"]:checked').length
+    var graph_all = graph_yes + graph_no
+
+    const data = {
+  labels: [
+    'Conforme',
+    'Não conforme',
+  ],
+  datasets: [{
+    data:[graph_yes, graph_no],
+    backgroundColor: [
+      'rgb(59, 160, 59)',
+      'rgb(158, 40, 40)',
+    ],
+    hoverOffset: 4
+  }]
+};
+
+  const config = {
+  type: 'doughnut',
+  data: data,
+};
+
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+}
+
+</script>
+</body>
+</html>
