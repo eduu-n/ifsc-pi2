@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <style>
@@ -48,12 +49,18 @@
         margin-top: 20px;
         margin-bottom: 10px;
     }
-    #grafico{
+    #grafico {
         text-align: center;
         width: 400px;
         margin-top: 20px;
         margin-bottom: 10px;
-        display: none;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        background-color: white;
+        border-radius: 15px;
+        width: 400px;
+        box-shadow: 2px 2px 15px 0px rgba(0,0,0,0.2);
+        display:none;
     }
     #selecao {
         text-align: center;
@@ -780,11 +787,10 @@
         <button onclick="count()">Gerar Gráfico</button>
     </div>
     <div id="grafico">
-    <h2>Itens em Conformidade</h2>
-    <canvas id="myChart"></canvas>
     </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
 <script>
 
 document.getElementById('rampa').addEventListener('change', e => {
@@ -1009,6 +1015,7 @@ function count(){
     var graph_yes = document.querySelectorAll('input[value="yes"]:checked').length
     var graph_no = document.querySelectorAll('input[value="no"]:checked').length
     var graph_all = graph_yes + graph_no
+    document.getElementById('grafico').innerHTML = `<h2>Itens em Conformidade</h2><p>Itens conforme: ${graph_yes} (${((graph_yes/graph_all)*100).toFixed(0)}%)</p><p>Itens não conforme: ${graph_no} (${((graph_no/graph_all)*100).toFixed(0)}%)</p><p>Total de itens analisados: ${graph_all}</p><br><canvas id="myChart"></canvas>`
 
     const data = {
   labels: [
