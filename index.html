@@ -12,6 +12,7 @@
 </head>
 
 <style>
+@media screen and (min-width: 414px) {
     body {
         background-color: #edeef0;
         display: table;
@@ -51,6 +52,8 @@
     }
     #grafico {
         text-align: center;
+        flex-wrap: wrap;
+        justify-content: center;
         width: 400px;
         margin-top: 20px;
         margin-bottom: 10px;
@@ -143,7 +146,145 @@
     input[type="checkbox"] {
 	accent-color: #333333;
     transform: scale(1.2);
+}}
+
+@media screen and (min-width: 1000px) {
+    body {
+        background-color: #edeef0;
+        display: table;
+        margin: auto;
+    }
+    h1, h2 {
+        font-family: Ubuntu;
+        color: #333333;
+        margin: 10px;
+    }
+    #inicio h3, #inicio h4, #selecao h3, #selecao h4 {
+        font-family: Ubuntu;
+        color: rgba(0, 0, 0, 0.4);
+        margin: 5px;
+        padding: 0px;
+    }
+    h3, h4 {
+        font-family: Ubuntu;
+        color: #333333;
+        margin: 5px;
+        padding-top: 15px;
+    }
+    p {
+        color: rgba(0, 0, 0, 0.4);
+        font-family: Ubuntu;
+        margin: 10px;
+    }
+    .logo {
+        height: 100px;
+        padding-top: 25px;
+    }
+    #inicio{
+        text-align: center;
+        width: 1000px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    #grafico {
+        width: 1000px;
+        justify-content: center;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 2px 2px 15px 0px rgba(0,0,0,0.2);
+    }
+    #selecao {
+        text-align: center;
+        background-color: white;
+        width: 1000px;
+        border-radius: 15px;
+        box-shadow: 2px 2px 15px 0px rgba(0,0,0,0.2);
+        padding-top: 5px;
+        padding-bottom: 10px;
+    }
+    #selecao h3 {
+        font-family: Ubuntu;
+        color: #333333;
+        margin: 10px;
+    }
+    #selecao_itens {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    #botao_selecao{
+        padding-top: 10px;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+    #chart {
+        width: 400px;
+    }
+    #rampa_lista, #degraus_lista, #corrimaos_lista, #pisos_lista, #desniveis_lista, #rampa_lista, #grelhas_lista, #caixas_lista, #rotasacess_lista, #rotasfuga_lista, #elevadores_lista, #portas_lista, #interfones_lista, #sala_lista, #cozinha_lista, #dormitorio2_lista, #dormitorio1_lista, #banheiros_lista, #areaservico_lista {
+        text-align: center;
+        background-color: white;
+        border-radius: 15px;
+        width: 1000px;
+        box-shadow: 2px 2px 15px 0px rgba(0,0,0,0.2);
+        display: none;
+        margin-top: 15px;
+    }
+        button {
+        font-family: Ubuntu;
+        font-size: 18px;
+        background-color: #ffffff;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    button:hover {
+        cursor: pointer;
+        color: #ffffff;
+        background-color: #333333;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    table {
+        font-family: Ubuntu;
+        margin: 10px;
+        width: 98%;
+    }
+    td {
+        text-align: center;
+        padding: 10px;
+        color: rgba(0, 0, 0, 0.4);
+    }
+    td:nth-child(1) {
+        text-align: left;
+        padding: 10px;
+        color: rgba(0, 0, 0, 0.4);
+        width: 900px;
+    }
+    th {
+       padding-right: 10px;
+       padding-left: 10px;
+    }
+    input[value="yes"] {
+	accent-color: rgb(59, 160, 59);
+    transform: scale(1.5);
 }
+    input[value="no"] {
+	accent-color: rgb(158, 40, 40);
+    transform: scale(1.5);
+}
+    input[value="na"] {
+	accent-color: #333333;
+    transform: scale(1.5);
+}
+    input[type="checkbox"] {
+	accent-color: #333333;
+    transform: scale(1.2);
+}}
+
 </style>
 
 <body>
@@ -1011,11 +1152,11 @@ function selects(){
             }
 
 function count(){
-    document.getElementById('grafico').style.display = "block"
+    document.getElementById('grafico').style.display = "flex"
     var graph_yes = document.querySelectorAll('input[value="yes"]:checked').length
     var graph_no = document.querySelectorAll('input[value="no"]:checked').length
     var graph_all = graph_yes + graph_no
-    document.getElementById('grafico').innerHTML = `<h2>Itens em Conformidade</h2><p>Itens conforme: ${graph_yes} (${((graph_yes/graph_all)*100).toFixed(0)}%)</p><p>Itens não conforme: ${graph_no} (${((graph_no/graph_all)*100).toFixed(0)}%)</p><p>Total de itens analisados: ${graph_all}</p><br><canvas id="myChart"></canvas>`
+    document.getElementById('grafico').innerHTML = `<div style="width: 100%"><h2>Itens em Conformidade</h2><p>Itens conforme: ${graph_yes} (${((graph_yes/graph_all)*100).toFixed(0)}%)</p><p>Itens não conforme: ${graph_no} (${((graph_no/graph_all)*100).toFixed(0)}%)</p><p>Total de itens analisados: ${graph_all}</p></div><div id="chart"><canvas id="myChart"></canvas></div>`
 
     const data = {
   labels: [
